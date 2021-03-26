@@ -10,11 +10,11 @@ import java.util.Locale;
 
 public class Utils {
 
-    public void escreveCSV(List<String> teste, String inputName) throws IOException {
+    public void escreveCSV(List<String> listaLinhaCSV, String inputName) throws IOException {
         FileWriter arq = new FileWriter("data\\out\\" + inputName + "Out.csv");
         PrintWriter gravarArq = new PrintWriter(arq);
 
-        for (String s : teste) {
+        for (String s : listaLinhaCSV) {
             gravarArq.println(s);
         }
         arq.close();

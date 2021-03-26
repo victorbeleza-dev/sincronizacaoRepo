@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @author gabriel_stabel<gabriel_stabel@sicredi.com.br>
+ * @author gabriel_stabel<gabriel_stabel @ sicredi.com.br>
  */
 @Service
 public class ReceitaServiceImpl implements ReceitaService {
@@ -58,7 +58,7 @@ public class ReceitaServiceImpl implements ReceitaService {
     }
 
     @Override
-    public boolean verificaConta(String inputFile) throws IOException, InterruptedException, ParseException {
+    public void verificaConta(String inputFile) throws IOException, InterruptedException, ParseException {
         File arquivoCSV = new File("data/" + inputFile + ".csv");
 
         try {
@@ -83,9 +83,6 @@ public class ReceitaServiceImpl implements ReceitaService {
         } catch (Exception e) {
             throw e;
         }
-
-        return true;
     }
-
 
 }

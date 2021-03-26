@@ -5,5 +5,5 @@ import java.text.ParseException;
 
 public interface ReceitaService {
 
-    boolean verificaConta(String inputFile) throws IOException, InterruptedException, ParseException;
+    void verificaConta(String inputFile) throws IOException, InterruptedException, ParseException;
 }

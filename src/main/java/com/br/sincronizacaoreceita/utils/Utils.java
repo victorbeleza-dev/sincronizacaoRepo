@@ -25,4 +25,9 @@ public class Utils {
         Number number = format.parse(saldo);
         return number.doubleValue();
     }
+
+    public String retiraSinais(String number){
+        String result = number.replaceAll("\\p{Punct}", "");
+        return result;
+    }
 }

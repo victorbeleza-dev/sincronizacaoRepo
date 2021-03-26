@@ -75,7 +75,7 @@ public class ReceitaServiceImpl implements ReceitaService {
 
                 String[] valoresEntreVirgulas = linhasDoArquivo.split(";");
 
-                listaCSV.add(linhasDoArquivo + ";" + atualizarConta(valoresEntreVirgulas[0], valoresEntreVirgulas[1],
+                listaCSV.add(linhasDoArquivo + ";" + atualizarConta(valoresEntreVirgulas[0], utils.retiraSinais(valoresEntreVirgulas[1]),
                         utils.convertDouble(valoresEntreVirgulas[2]), valoresEntreVirgulas[3]));
             }
 

@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public class Utils {
 
-    public boolean escreveCSV(List<String> teste, String inputName) throws IOException {
+    public void escreveCSV(List<String> teste, String inputName) throws IOException {
         FileWriter arq = new FileWriter("data\\out\\" + inputName + "Out.csv");
         PrintWriter gravarArq = new PrintWriter(arq);
 
@@ -18,7 +18,6 @@ public class Utils {
             gravarArq.println(s);
         }
         arq.close();
-        return true;
     }
 
     public double convertDouble(String saldo) throws ParseException {

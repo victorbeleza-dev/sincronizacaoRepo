@@ -27,7 +27,6 @@ public class Utils {
     }
 
     public String retiraSinais(String number){
-        String result = number.replaceAll("\\p{Punct}", "");
-        return result;
+        return number.replaceAll("\\p{Punct}", "");
     }
 }

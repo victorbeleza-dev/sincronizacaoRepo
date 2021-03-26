@@ -1,13 +1,20 @@
 package com.br.sincronizacaoreceita.service.impl;
 
 import com.br.sincronizacaoreceita.service.ReceitaService;
+import com.br.sincronizacaoreceita.utils.Utils;
+import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author gabriel_stabel<gabriel_stabel@sicredi.com.br>
  */
+@Service
 public class ReceitaServiceImpl implements ReceitaService {
 
     // Esta é a implementação interna do "servico" do banco central. Veja o código fonte abaixo para ver os formatos esperados pelo Banco Central neste cenário.
@@ -49,4 +56,38 @@ public class ReceitaServiceImpl implements ReceitaService {
 
         return true;
     }
+
+    @Override
+    public boolean verificaConta(String inputFile) throws IOException, InterruptedException, ParseException {
+        File arquivoCSV = new File("data/" + inputFile + ".csv");
+
+        try {
+            String linhasDoArquivo = new String();
+
+            Scanner leitor = new Scanner(arquivoCSV);
+            leitor.nextLine();
+
+            List<String> listaCSV = new ArrayList<>();
+            Utils utils = new Utils();
+
+            while (leitor.hasNext()) {
+                linhasDoArquivo = leitor.nextLine();
+
+                String[] valoresEntreVirgulas = linhasDoArquivo.split(";");
+
+                listaCSV.add(linhasDoArquivo + ";" + atualizarConta(valoresEntreVirgulas[0], valoresEntreVirgulas[1],
+                        utils.convertDouble(valoresEntreVirgulas[2]), valoresEntreVirgulas[3]));
+
+                System.out.println(valoresEntreVirgulas[0] + " --- " + valoresEntreVirgulas[1]);
+            }
+
+            utils.escreveCSV(listaCSV, inputFile);
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return true;
+    }
+
+
 }

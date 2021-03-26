@@ -21,7 +21,7 @@ public class SincronizacaoController {
     public ResponseEntity<String> teste(@PathVariable String inputFile) throws IOException, InterruptedException, ParseException {
         try {
             receitaService.verificaConta(inputFile);
-            return new ResponseEntity<>("Arquivo CSV Criado com Sucesso!", HttpStatus.CREATED);
+            return new ResponseEntity<>("Arquivo CSV criado com sucesso!", HttpStatus.CREATED);
         } catch (Exception e) {
             throw e;
         }
